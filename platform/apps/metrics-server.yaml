@@ -6,15 +6,15 @@ metadata:
 spec:
   project: default
   sources:
-    - repoURL: https://kubernetes-sigs.github.io/metrics-server/
+    - repoURL: https://kubernetes-sigs.github.io/metrics-server/ #metrics server installed
       chart: metrics-server
       targetRevision: 3.14.0
       helm:
         valueFiles:
-          - $values/platform/metrics-server/values.yaml
+          - $values/platform/metrics-server/values.yaml #additional values referred to the github repo
     - repoURL: https://github.com/boredcod/MLInfraPractice
       targetRevision: main
-      ref: values
+      ref: values #giving this makes $values at the valueFiles above refer to here
   destination:
     server: https://kubernetes.default.svc
     namespace: kube-system
